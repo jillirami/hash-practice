@@ -2,11 +2,23 @@
 
 # This method will return an array of arrays.
 # Each subarray will have strings which are anagrams of each other
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n^2) depending on amount of strings, and length of strings for sorting 
+# Space Complexity: O(n) lengths of arrays
 
 def grouped_anagrams(strings)
-  raise NotImplementedError, "Method hasn't been implemented yet!"
+  strings = {}
+
+  strings.each do |string|
+    # https://stackoverflow.com/questions/9464065/how-to-sort-a-strings-characters-alphabetically
+    alphabetized_string = string.chars.sort.join
+    if strings[alphabetized_string]
+      strings[alphabetized_string] << [string]
+    else
+      strings[alphabetized_string] = [string]
+    end
+  end
+
+  return strings.values
 end
 
 # This method will return the k most common elements
@@ -14,7 +26,21 @@ end
 # Time Complexity: ?
 # Space Complexity: ?
 def top_k_frequent_elements(list, k)
-  raise NotImplementedError, "Method hasn't been implemented yet!"
+  # list = [1,1,1,2,2,3]
+  # k = 2
+
+  # counter = {}
+
+  # list.each do |value|
+  #   if counter[value]
+  #     counter[value] += 1
+  #   else
+  #     counter[value] = 1
+  #   end
+  # end
+
+  ordered = counter.sort_by{ |key, value| value } 
+
 end
 
 
