@@ -28,19 +28,29 @@ end
 def top_k_frequent_elements(list, k)
   # list = [1,1,1,2,2,3]
   # k = 2
+  return [] if list == []
 
-  # counter = {}
+  counter = {}
 
-  # list.each do |value|
-  #   if counter[value]
-  #     counter[value] += 1
-  #   else
-  #     counter[value] = 1
-  #   end
-  # end
+  list.each do |value|
+    if counter[value]
+      counter[value] += 1
+    else
+      counter[value] = 1
+    end
+  end
+
+  puts counter
 
   ordered = counter.sort_by{ |key, value| value } 
 
+  k_most = []
+
+  k.times do |i|
+    k_most << ordered[-i]
+  end
+
+  return k_most
 end
 
 
